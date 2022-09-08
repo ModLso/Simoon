@@ -3,10 +3,10 @@
 _get_zlink () {
     local regex
     regex='(https?)://github.com/.+/.+'
-    if [[ $UPSTREAM_REPO == "goodcat" ]]
+    if [[ $UPSTREAM_REPO == "tepton" ]]
     then
         echo "aHR0cHM6Ly9naXRodWIuY29tL01vZExzby90ZXRob24vYXJjaGl2ZS9tYXN0ZXIuemlw=" | base64 -d
-    elif [[ $UPSTREAM_REPO == "badcat" ]]
+    elif [[ $UPSTREAM_REPO == "tepton" ]]
     then
         echo "aHR0cHM6Ly9naXRodWIuY29tL01vZExzby90ZXRob24vYXJjaGl2ZS9tYXN0ZXIuemlw=" | base64 -d
     elif [[ $UPSTREAM_REPO =~ $regex ]]
@@ -26,10 +26,10 @@ _get_repolink () {
     local regex
     local rlink
     regex='(https?)://github.com/.+/.+'
-    if [[ $UPSTREAM_REPO == "goodcat" ]]
+    if [[ $UPSTREAM_REPO == "tepton" ]]
     then
         rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL01vZExzby90ZXRob24==" | base64 -d`
-    elif [[ $UPSTREAM_REPO == "badcat" ]]
+    elif [[ $UPSTREAM_REPO == "tepton" ]]
     then
         rlink=`echo "aHR0cHM6Ly9naXRodWIuY29tL01vZExzby90ZXRob24==" | base64 -d`
     elif [[ $UPSTREAM_REPO =~ $regex ]]
@@ -49,7 +49,7 @@ _run_python_code() {
 _run_catpackgit() {
     $(_run_python_code 'from git import Repo
 import sys
-OFFICIAL_UPSTREAM_REPO = "https://github.com/TgCatUB/nekopack"
+OFFICIAL_UPSTREAM_REPO = "https://github.com/ModLso/Simoon"
 ACTIVE_BRANCH_NAME = "master"
 repo = Repo.init()
 origin = repo.create_remote("temponame", OFFICIAL_UPSTREAM_REPO)
@@ -73,7 +73,7 @@ repo.heads[ACTIVE_BRANCH_NAME].checkout(True) ')
 
 _start_bot () {
     local zippath
-    zippath="catuserbot.zip"
+    zippath="tethon.zip"
     echo "  Downloading source code ..."
     wget -q $(_get_zlink) -O "$zippath"
     echo "  Unpacking Data ..."
